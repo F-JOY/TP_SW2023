@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tns="http://tp3.me.org/" 
+                 targetNamespace="http://tp3.me.org/" 
+                 name="CalculatorService">
+
+ <wsdl:types>
+    <xsd:schema>
+    <xsd:import namespace="http://tp3.me.org/" schemaLocation="http://es1-572-51jw:8080/CalculatorService/CalculatorService?xsd=1"/>
+    </xsd:schema>
+  </wsdl:types>
+  <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/calculator">
+            <!-- Définition du type d'entrée pour l'opération d'addition -->
+           
+        </schema>
+    </types>
+  <wsdl:message name="addRequest">
+    <wsdl:part name="x1" type="xsd:int"/>
+    <wsdl:part name="y1" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="Addresult" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="subtractRequest">
+    <wsdl:part name="x2" type="xsd:int"/>
+    <wsdl:part name="y2" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="subtractResponse">
+    <wsdl:part name="Subresult" type="xsd:int"/>
+  </wsdl:message>
+
+  <wsdl:portType name="CalculatorPortType">
+    <wsdl:operation name="Add">
+      <wsdl:input wsam:Action="http://tp3.me.org/CalculatorService/addRequest" message="tns:addRequest"/>
+      <wsdl:output wsam:Action="http://tp3.me.orgCalculatorService/addResponse" message="tns:addResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:input wsam:Action="http://tp3.me.org/CalculatorService/subtractRequest" message="tns:subtractRequest"/>
+      <wsdl:output wsam:Action="http://tp3.me.org/CalculatorService/subtractResponse" message="tns:subtractResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="CalculatorBinding" type="tns:CalculatorPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tp3.me.org/CalculatorService/Add"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="http://tp3.me.org/CalculatorService/Subtract"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="CalculatorService">
+    <wsdl:port binding="tns:CalculatorBinding" name="CalculatorPort">
+      <soap:address  location="http://localhost:8080/CalculatorService/CalculatorService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

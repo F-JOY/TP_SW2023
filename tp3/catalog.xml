@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/mis/Desktop/tpsw/tp3.wsdl" uri="src/conf/xml-resources/web-services/CalculatorService/wsdl/tp3.wsdl"/>
+    <system systemId="file:/C:/Users/mis/Desktop/tpsw/tst.wsdl" uri="src/conf/xml-resources/web-services/CalculatorService/wsdl/tst.wsdl"/>
+    <system systemId="file:/C:/Users/mis/Downloads/GoogleSearch.wsdl" uri="src/conf/xml-resources/web-services/search/wsdl/GoogleSearch.wsdl"/>
+    <system systemId="file:/C:/Users/mis/Downloads/GoogleSearch%20(1).wsdl" uri="src/conf/xml-resources/web-services/search/wsdl/GoogleSearch%20(1).wsdl"/>
+    <system systemId="file:/C:/Users/mis/Desktop/tpsw/weather.wsdl" uri="src/conf/xml-resources/web-services/weather/wsdl/weather.wsdl"/>
+</catalog>

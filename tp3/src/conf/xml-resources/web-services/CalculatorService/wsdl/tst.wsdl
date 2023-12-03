@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.example.com/calculator"
+             targetNamespace="http://www.example.com/calculator"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Déclaration des types de données -->
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/calculator">
+            <!-- Définition du type d'entrée pour l'opération d'addition -->
+           
+        </schema>
+    </types>
+
+    <!-- Déclaration des messages pour les opérations -->
+    <message name="addRequest">
+    <part name="x1" type="xsd:int"/>
+    <part name="y1" type="xsd:int"/>
+  </message>
+  <message name="addResponse">
+    <part name="Addresult" type="xsd:int"/>
+  </message>
+  <message name="subtractRequest">
+    <part name="x2" type="xsd:int"/>
+    <part name="y2" type="xsd:int"/>
+  </message>
+  <message name="subtractResponse">
+    <part name="Subresult" type="xsd:int"/>
+  </message>
+
+
+    <!-- Déclaration des opérations -->
+    <portType name="CalculatorPortType">
+        <operation name="Add">
+            <input message="tns:AddRequest"/>
+            <output message="tns:AddResponse"/>
+        </operation>
+        <operation name="Subtract">
+            <input message="tns:SubtractRequest"/>
+            <output message="tns:SubtractResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Déclaration du service -->
+    <binding name="CalculatorBinding" type="tns:CalculatorPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Add">
+            <soap:operation soapAction="http://www.example.com/calculator/Add"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Subtract">
+            <soap:operation soapAction="http://www.example.com/calculator/Subtract"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CalculatorService">
+        <port name="CalculatorPort" binding="tns:CalculatorBinding">
+            <soap:address location="http://www.example.com/calculator"/>
+        </port>
+    </service>
+</definitions>
